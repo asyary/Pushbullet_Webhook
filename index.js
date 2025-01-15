@@ -1,6 +1,7 @@
 const axios = require("axios");
+require('dotenv').config();
 
-const pushbulletApiKey = "pushbulletkey";
+const pushbulletApiKey = process.env.PUSHBULLET_API_KEY;
 
 // Send push notification
 const sendPushNotification = async (title, body) => {
@@ -32,12 +33,13 @@ let previousContent = "";
 const makeGetRequest = async () => {
 	try {
 		const cacheBuster = Math.random().toString(36).substring(2);
-		const response = await axios.get("https://example.com/data/yourdata.json?"+cacheBuster);
+		const response = await axios.get(`${process.env.WEBHOOK_URL}?${cacheBuster}`);
 		const currentContent = JSON.stringify(response.data);
 
 		// Check if content has changed
 		if (previousContent === "") {
 			previousContent = currentContent;
+			sendPushNotification("Initiated!");
 			console.log("Initiated!");
 		}
 		if (currentContent !== previousContent) {
