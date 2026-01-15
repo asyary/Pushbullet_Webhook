@@ -54,5 +54,5 @@ const makeGetRequest = async () => {
 	}
 };
 
-// Make GET request every 30 seconds
+// Make GET request every 15 seconds
 setInterval(makeGetRequest, 15000);
