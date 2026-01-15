@@ -55,4 +55,4 @@ const makeGetRequest = async () => {
 };
 
 // Make GET request every 15 seconds
-setInterval(makeGetRequest, 15000);
+setInterval(makeGetRequest, process.env.INTERVAL_MS || 15000);

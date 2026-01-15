@@ -1,2 +1,3 @@
 PUSHBULLET_API_KEY=your_api_key
 WEBHOOK_URL=your_webhook_url
+INTERVAL_MS=15000
